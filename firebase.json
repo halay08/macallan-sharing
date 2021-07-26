@@ -1,0 +1,35 @@
+{
+  "hosting": [
+    {
+      "target": "macallan-sharing-staging",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/src/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "nextServer"
+        }
+      ]
+    },
+    {
+      "target": "macallan-sharing-dev",
+      "public": "out",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/src/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "nextServer"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "source": ".",
+    "ignore": [
+      ".firebase/**",
+      ".firebaserc",
+      "firebase.json",
+      "**/node_modules/**"
+    ]
+  }
+}

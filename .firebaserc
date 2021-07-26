@@ -1,0 +1,30 @@
+{
+  "projects": {
+    "develop": "macallan-dev",
+    "staging": "macallan-ecf92",
+    "production": "macallan",
+    "default": "macallan-dev"
+  },
+  "targets": {
+    "macallan-ecf92": {
+      "hosting": {
+        "macallan-staging": [
+          "macallan-staging"
+        ],
+        "macallan-sharing-staging": [
+          "macallan-sharing-staging"
+        ]
+      }
+    },
+    "macallan-dev": {
+      "hosting": {
+        "macallan-dev": [
+          "macallan-dev"
+        ],
+        "macallan-sharing-dev": [
+          "macallan-sharing-dev"
+        ]
+      }
+    }
+  }
+}
