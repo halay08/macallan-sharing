@@ -41,7 +41,7 @@ jobs:
         run: |
           yarn --pure-lockfile
           yarn build:develop
-          yarn export
+          yarn export:develop
 
       - name: Activate Develop Project
         uses: w9jds/firebase-action@master
@@ -84,7 +84,7 @@ jobs:
         run: |
           yarn --pure-lockfile
           yarn build:staging
-          yarn export
+          yarn export:staging
 
       - name: Activate Staging Project
         uses: w9jds/firebase-action@master
