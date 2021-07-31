@@ -96,6 +96,6 @@ jobs:
       - name: Deploy to production
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only functions:nextServer,hosting:${{secrets.SITE}} --token ${{ secrets.FIREBASE_TOKEN_PROD }} --force --project production
+          args: deploy --only functions:nextServer,hosting:${{secrets.SITE_PROD}} --token ${{ secrets.FIREBASE_TOKEN_PROD }} --force --project production
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
