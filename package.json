@@ -10,11 +10,11 @@
     "dev": "next dev",
     "build": "next build",
     "build:develop": "env-cmd -f .env.development yarn build",
-    "build:staging": "env-cmd -f .env.staging yarn build",
+    "build:production": "env-cmd -f .env.production yarn build",
     "start": "next start",
     "lint": "next lint",
     "export:develop": "env-cmd -f .env.development next export",
-    "export:staging": "env-cmd -f .env.staging next export"
+    "export:production": "env-cmd -f .env.production next export"
   },
   "dependencies": {
     "env-cmd": "^10.1.0",

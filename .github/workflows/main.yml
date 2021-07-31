@@ -9,7 +9,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - staging
+      - master
       - develop
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -57,9 +57,9 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-  deploy-staging:
+  deploy-production:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/staging'
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
 
@@ -83,19 +83,19 @@ jobs:
       - name: Build
         run: |
           yarn --pure-lockfile
-          yarn build:staging
-          yarn export:staging
+          yarn build:production
+          yarn export:production
 
-      - name: Activate Staging Project
+      - name: Activate Production Project
         uses: w9jds/firebase-action@master
         with:
-          args: use staging
+          args: use production
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
 
-      - name: Deploy to staging
+      - name: Deploy to production
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only functions:nextServer,hosting:${{secrets.SITE}} --token ${{ secrets.FIREBASE_TOKEN }} --force --project staging
+          args: deploy --only functions:nextServer,hosting:${{secrets.SITE}} --token ${{ secrets.FIREBASE_TOKEN_PROD }} --force --project production
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_PROD }}
